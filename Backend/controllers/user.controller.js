@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import uploadOnCloudinary from "../config/cloudinary.js";
 import geminiResponse from "../gemini.js";
-import moment from "moment";
+import moment from 'moment-timezone';
 import { response } from "express";
 export const getCurrentUser = async (req, res) => {
   try {
@@ -82,7 +82,7 @@ export const getAssistant = async (req, res) => {
         return res.json({
           type,
           userinput: jsonResponse.userinput,
-          response: `current time is ${moment().format("h:mm A")}`,
+          response: `current time is ${moment().tz('Asia/Kolkata').format("h:mm A")}`,
         });
       case "get_date":
         return res.json({
