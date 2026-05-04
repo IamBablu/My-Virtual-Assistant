@@ -11,7 +11,7 @@ import geminiResponse  from "../Backend/gemini.js";
 const app = express();
 const port = process.env.PORT || 8000;
 app.use(cors({
-  origin: 'http://localhost:5173', // Slash mat lagana
+  origin: 'https://my-virtual-assistant-4y7t.onrender.com', // Slash mat lagana
   credentials: true
 }));
 app.use(express.json());
