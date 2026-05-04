@@ -27,9 +27,9 @@ const UserContext = ({ children }) => {
   const getGeminiResponse = async (message) => {
     try {
       const response = await axios.post(`${serverUrl}/user/gemini`, { command: message }, { withCredentials: true });
-      console.log("Daaattatatatata: ", response)
+      
       return response.data;
-      return null
+     
     } catch (error) {
       console.error('Error fetching Gemini response:', error);
       
