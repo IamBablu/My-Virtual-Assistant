@@ -49,61 +49,31 @@ const Home = () => {
       }
     }
   }
- 
-let voices = [] // Global cache
-
-function App() {
-  const isSpeakingRef = useRef(false)
-  const [aiText, setAiText] = useState("")
-
-  // 1. Voices preload karo
-  useEffect(() => {
-    const loadVoices = () => {
-      voices = synth.getVoices()
-    }
-    
-    loadVoices()
-    // Chrome me event fire hota hai jab voices load hoti hain
-    synth.onvoiceschanged = loadVoices
-    
-    return () => {
-      synth.onvoiceschanged = null
-    }
-  }, [])
-
   const speak = (text) => {
-    synth.cancel() // Pehle se bol raha ho to rok do
-    recognitionRef.current?.stop()
-    setListening(false)
+    const utterance = new SpeechSynthesisUtterance(text);
 
-    const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = 'hi-IN'
-    
-    // Ab voices array me data hoga
-    const hindiVoice = voices.find(v => v.lang === 'hi-IN')
-    if (hindiVoice) utterance.voice = hindiVoice
-    
-    utterance.rate = 1
-    utterance.pitch = 1
+    utterance.lang = 'hi-IN';
+    const voices = window.speechSynthesis.getVoices();
+    const hindiVoice = voices.find(v => v.lang === 'hi-IN');
+    if (hindiVoice) {
+      utterance.voice = hindiVoice;
+    }
 
     isSpeakingRef.current = true
-    
     utterance.onend = () => {
       setAiText("")
       isSpeakingRef.current = false
       setTimeout(() => {
-        startRecognition() // 800ms baad mic on
-      }, 800)
-    }
-    
-    utterance.onerror = (e) => {
-      console.log("TTS Error:", e.error)
-      isSpeakingRef.current = false
-    }
+        startRecognition()
 
-    synth.speak(utterance)
+      }, 800);
+
+    }
+    synth.cancel();
+    recognitionRef.current?.stop()
+    setListening(false)
+    synth.speak(utterance);
   }
-}
 
 
   const hendlecommand = async (data) => {
