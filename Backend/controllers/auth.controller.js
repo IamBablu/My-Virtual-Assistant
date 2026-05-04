@@ -25,8 +25,8 @@ export const Singnup = async (req, res) => {
             const token = await getToken(user._id);
             res.cookie("token", token,{
                 httpOnly: true,
-                secure: false,
-                sameSite: "strict",
+                secure: true,
+                sameSite: "None",
                 maxAge: 90 * 24 * 60 * 60 * 1000
             })
             res.status(201).json({ message: "User created successfully", user});
@@ -53,8 +53,8 @@ export const Login = async (req, res) => {
         const token = await getToken(user._id);
         res.cookie("token", token,{
             httpOnly: true,
-            secure: false,
-            sameSite: "strict",
+            secure: true,
+            sameSite: "None",
             maxAge: 90 * 24 * 60 * 60 * 1000
         })
         res.status(200).json({ message: "Login successful", user });    
