@@ -38,7 +38,7 @@ const Customize2 = () => {
 
       <IoArrowBackCircleSharp className='absolute text-white text-4xl top-8 left-8 cursor-pointer' onClick={() => navigate("/customize")} />
       <h1 className='text-white text-3xl text-center'>Enter Your <span className='text-blue-300'>Assistant Name</span></h1>
-      <input name='AssistantName' type="text" placeholder='eg. Alex' autoComplete="AssistantName" className='w-full max-w-[600px] h-[60px] rounded-full outline-none border-2 border-x-blue-500 bg-transparent text-white placeholder-gray-400 text-lg p-[20px]' required onChange={(event) => {
+      <input name='AssistantName' type="text" placeholder='eg. Alexa' autoComplete="AssistantName" className='w-full max-w-[600px] h-[60px] rounded-full outline-none border-2 border-x-blue-500 bg-transparent text-white placeholder-gray-400 text-lg p-[20px]' required onChange={(event) => {
         setAssistantName(event.target.value)
       }} value={assistantName} />
       {assistantName && <button className='w-[200px] h-[50px] rounded-full bg-blue-500 text-white text-lg font-semibold hover:bg-blue-600 transition-colors duration-300 cursor-pointer' onClick={() => {
