@@ -5,7 +5,7 @@ import axios from 'axios';
 export const UserDataContext = React.createContext();
 
 const UserContext = ({ children }) => {
-  const serverUrl = 'http://localhost:8008/virtual-assistant/api/V1';
+  const serverUrl = 'https://my-virtual-assistant-backend-5jzp.onrender.com/virtual-assistant/api/V1';
   const [userData, setUserData] = useState(null);
 
   const [frontImage, setFrontImage] = React.useState(null);
