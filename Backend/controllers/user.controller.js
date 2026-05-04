@@ -82,25 +82,25 @@ export const getAssistant = async (req, res) => {
         return res.json({
           type,
           userinput: jsonResponse.userinput,
-          response: `current time is ${moment().format("h:mm A")}`,
+          response: `current time is ${moment().tz('Asia/Kolkata').format("h:mm A")}`,
         });
       case "get_date":
         return res.json({
           type,
           userinput: jsonResponse.userinput,
-          response: `today's date is ${moment().format("MMMM Do YYYY")}`,
+          response: `today's date is ${moment().tz('Asia/Kolkata').format("MMMM Do YYYY")}`,
         });
       case "get_day":
         return res.json({
           type,
           userinput: jsonResponse.userinput,
-          response: `today is ${moment().format("dddd")}`,
+          response: `today is ${moment().tz('Asia/Kolkata').format("dddd")}`,
         });
       case "get_month":
         return res.json({
           type,
           userinput: jsonResponse.userinput,
-          response: `current month is ${moment().format("MMMM")}`,
+          response: `current month is ${moment().tz('Asia/Kolkata').format("MMMM")}`,
         });
 
       case "get_weather":
