@@ -82,7 +82,7 @@ export const getAssistant = async (req, res) => {
         return res.json({
           type,
           userinput: jsonResponse.userinput,
-          response: `current time is ${moment().tz('Asia/Kolkata').format("h:mm A")}`,
+          response: `current time is ${moment().format("h:mm A")}`,
         });
       case "get_date":
         return res.json({
